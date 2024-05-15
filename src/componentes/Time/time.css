@@ -6,6 +6,7 @@
 
 .time h3 {
     font-size: 32px;
+    font-weight: bold;
     font-family: 'Prata';
     border-bottom: 4px solid;
     display: inline-block;
