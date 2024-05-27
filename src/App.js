@@ -24,9 +24,19 @@ function App() {
 		}))
 	}
 
+	function alternaFavorito(id) {
+		setColaboradores(colaboradores.map(colaborador => {
+			if (colaborador.id === id) {
+				colaborador.favorito = !colaborador.favorito
+			}
+			return colaborador 
+		}))
+	}
+
 	function cadastrarTime(novoTime) {
 		setTimes([ ...times, { ...novoTime, id: uuidv4() }])
 	}
+
 
   	return (
 		<div>
@@ -44,6 +54,7 @@ function App() {
 					colaboradores={colaboradores.filter(colaborador => colaborador.time === time.id)}
 					mudarCor={mudarCorTime}
 					aoDeletar={deletarColaborador}
+					aoFavoritar={alternaFavorito}
 				/>
 				)}
 			</section>

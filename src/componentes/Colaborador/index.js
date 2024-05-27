@@ -1,18 +1,38 @@
 import './colaborador.css'
-import { AiFillCloseCircle } from 'react-icons/ai' 
+import { AiFillCloseCircle, AiFillHeart, AiOutlineHeart } from 'react-icons/ai' 
 
-const Colaborador = ({ colaborador, corDeFundo, aoDeletar }) => {
-    const iconSize = 25
-    return (<div className="colaborador">
-        <AiFillCloseCircle className="deletar" size={iconSize} onClick={() => aoDeletar(colaborador.id)} />            
-        <div className="cabecalho" style={{ backgroundColor: corDeFundo }}>
-            <img src={colaborador.imagem} alt={colaborador.nome} />
+const Colaborador = ({ colaborador, corDeFundo, aoDeletar, aoFavoritar }) => {      
+
+    const propsDeletar = {
+        className: 'deletar',
+        size: 25,
+        onClick: () => aoDeletar(colaborador.id)
+    }
+    
+    const propsFavorito = {
+        size: 25,
+        onClick: () => aoFavoritar(colaborador.id)
+    }
+
+    return (
+        <div className="colaborador">
+            <AiFillCloseCircle {...propsDeletar} />            
+            <div className="cabecalho" style={{ backgroundColor: corDeFundo }}>
+                <img src={colaborador.imagem} alt={colaborador.nome} />
+            </div>
+            <div className="rodape">
+                <h4>{colaborador.nome}</h4>
+                <h5>{colaborador.cargo}</h5>
+                <div className='favoritar'>
+                    {
+                        colaborador.favorito 
+                            ? <AiFillHeart {...propsFavorito} color='#FF0000' /> 
+                            : <AiOutlineHeart {...propsFavorito} />
+                    }
+                </div>
+            </div>
         </div>
-        <div className="rodape">
-            <h4>{colaborador.nome}</h4>
-            <h5>{colaborador.cargo}</h5>
-        </div>
-    </div>)
+    )        
 }
 
 export default Colaborador
