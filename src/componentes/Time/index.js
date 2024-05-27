@@ -11,7 +11,7 @@ const Time = ({ time, colaboradores, aoDeletar, mudarCor }) => {
                     <label>Cor do time: </label>
                     <input type='color'                         
                         value={time.cor} 
-                        onChange={event => mudarCor(event.target.value, time.nome)} />
+                        onChange={event => mudarCor(event.target.value, time.id)} />
                 </div>
                 <h3 style={{ color: time.corSecundaria, borderColor: time.cor }}>{time.nome}</h3>
                 <div className='colaboradores'>
